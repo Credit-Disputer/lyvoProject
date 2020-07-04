@@ -2,50 +2,79 @@
 
 This document describes the objects present in the database.
 
-## User
+## User info
 
-A user is a therapist who logged in to the app.
+A user
 
-**Fields** : 
+**user** :
+
 ```json
-{   
-    "id": String,
-    "name": String,
-    "password": String,
-    "tokens": [String]
+{
+  "id": String,
+  "name": String,
+  "email": String,
+  "password": String,
+  "register_date": Date,
+  "Address": String,
+  "SSN": Int32,
+  "City": [String],
+  "State": String,
+  "Zip": Int32,
+  "DOB": Date,
+  "Equifax":[{"Org ID":String}],
+  "Experian":[{"Org ID": String}],
+  "Transunion":[{"Org ID": String}]
 }
 ```
 
-##  Patient 
+## Equifax
 
-A patient of a user (therapist).
+**Equifax** :
 
-**Body** : 
 ```json
 {
-    "id": String,
-    "userId": String,
-    "name": String,
-    "dob": String,
-    "notes": [String], 
-    "medication": [String],
-    "past_appointments": [{"date": String, "id": String}],
-    "future_appointments": [{"date": String, "id": String}]
-}   
+  "Org ID": String,
+  "CR Number": String,
+  "Creditor Name": String,
+  "Generated Date": Date,
+  "Enquiries":[{
+    "Inquiry Date": Date,
+    "Inquired Company":String  
+  }]
+}
 ```
 
-## Appointment
 
-A past or future appointment of a patient.
+## Transunion
 
+**Transunion** :
 
-**Body** : 
 ```json
-{   
-    "id": String,
-    "userId": String,
-    "patientId": String,
-    "date": String,
-    "notes": [String] 
+{
+  "Org ID": String,
+  "CR Number": String,
+  "Creditor Name": String,
+  "Generated Date": Date,
+  "Enquiries":[{
+    "Inquiry Date": Date,
+    "Inquired Company":String  
+  }]
+}
+```
+
+## Experian
+
+**Experian** :
+
+```json
+{
+  "Org ID": String,
+  "CR Number": String,
+  "Creditor Name": String,
+  "Generated Date": Date,
+  "Enquiries":[{
+    "Inquiry Date": Date,
+    "Inquired Company":String  
+  }]
 }
 ```
