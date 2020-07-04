@@ -52,8 +52,7 @@ const UserSchema = new mongoose.Schema({
   }],
   transunion:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref: 'transunion'
-  }]
+    ref: 'transunion'  }]
 });
 
 module.exports = User = mongoose.model("RegisterUser", UserSchema);
