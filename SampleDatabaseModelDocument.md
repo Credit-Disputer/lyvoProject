@@ -15,9 +15,9 @@ A user
   "email": String,
   "password": String,
   "register_date": Date,
-  "Address": String,
+  "Street Address": String,
   "SSN": Int32,
-  "City": [String],
+  "City": String,
   "State": String,
   "Zip": Int32,
   "DOB": Date,
@@ -37,7 +37,7 @@ A user
   "CR Number": String,
   "Creditor Name": String,
   "Generated Date": Date,
-  "Enquiries":[{
+  "Inquiries":[{
     "Inquiry Date": Date,
     "Inquired Company":String  
   }]
@@ -55,7 +55,7 @@ A user
   "CR Number": String,
   "Creditor Name": String,
   "Generated Date": Date,
-  "Enquiries":[{
+  "Inquiries":[{
     "Inquiry Date": Date,
     "Inquired Company":String  
   }]
@@ -72,7 +72,7 @@ A user
   "CR Number": String,
   "Creditor Name": String,
   "Generated Date": Date,
-  "Enquiries":[{
+  "Inquiries":[{
     "Inquiry Date": Date,
     "Inquired Company":String  
   }]
