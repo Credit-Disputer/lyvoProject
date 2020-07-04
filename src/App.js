@@ -1,42 +1,96 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { Component } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from "react-router-dom";
 
-import Login from "./components/login.component";
-import SignUp from "./components/signup.component";
 
-function App() {
-  return (<Router>
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to={"/sign-in"}>Credit Disputer</Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+//import Login from "./containers/Login";
+// import SignUp from "./components/signup.component";
+//import Dispute from "/Users/Fahim/Desktop/creditapp/src/components/experiandispute.js"
 
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={SignUp} />
-          </Switch>
-        </div>
-      </div>
-    </div></Router>
-  );
+
+class App extends Component{
+  render() {
+    return(
+      <Router>
+      <Route path="/" exact strict render={
+        () =>{
+          return (<div class="wrapper fadeInDown">
+                  <div id="formContent">
+
+
+
+                      <div class="fadeIn first">
+                            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="Sample Image" />
+                                </div>
+
+
+                                    <form>
+                                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"/>
+                                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+                                    <input type="submit" class="fadeIn fourth" value="Log In"/>
+
+                                    </form>
+
+
+                                    <div id="formFooter">
+                                    <a class="underlineHover" href="/SignUp/">Sign-up</a>
+                                    </div>
+
+                                      </div>
+                                      </div>);
+        }
+      }
+      />
+      <Route path="/SignUp/" exact strict render={
+        () =>{
+          return (<div class="wrapper fadeInDown">
+                  <div id="formContent">
+
+
+
+                      <div class="fadeIn first">
+                            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="Sample Image" />
+                                </div>
+
+
+                                    <form>
+                                    <input type="text" id="login" class="fadeIn second" name="First Name" placeholder="First"/>
+                                    <input type="text" id="password" class="fadeIn third" name="Last Name" placeholder="Last"/>
+                                    <input type="text" id="login" class="fadeIn second" name="Email" placeholder="Email Address"/>
+                                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+                                  <form action="/" method="get">
+                                    <input type="submit" value="Sign-Up"
+                                            name="Submit" id="frm1_submit" />
+                                  </form>
+                                    <div id="formFooter">
+                                    <a class="underlineHover" href="/">Back to login</a>
+                                    </div>
+                                    </form>
+
+
+
+
+                                      </div>
+                                      </div>);
+        }
+      }
+      />
+
+
+
+
+        </Router>
+    );
+  }
 }
+
+
+
+
+
+
+
+
 
 export default App;
