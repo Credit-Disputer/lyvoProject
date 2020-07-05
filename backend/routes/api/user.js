@@ -29,8 +29,14 @@ router.post(
     check(
       "password",
       "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 })
-  ],
+    ).isLength({ min: 6 }),
+    check("address","Please enter stress address").isAlphanumeric(),
+    check("city","Please enter a city").isAlpha(),
+    check("state","Please enter a state").isAlpha(),
+    check("zipcode","Please enter a zipcode").isPostalCode(),
+    check("SSN","Please enter you Social Security Number").isTaxID(),
+ ],
+  
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -50,10 +56,16 @@ router.post(
       }
 
       // Create new user
-      user = new User({
+     user = new User({
         name,
         email,
-        password
+        password,
+        address,
+        city,
+        state,
+        zipcode,
+        SSN
+
       });
 
       // Encrypt password
