@@ -30,7 +30,8 @@ connection.once("open", () => {
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/equifax", require("./routes/api/equifax"));
-
+app.use("/api/experian", require("./routes/api/experian"));
+app.use("/api/transunion", require("./routes/api/transunion"));
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

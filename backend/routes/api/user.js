@@ -131,7 +131,37 @@ router.route("/update-user/:id").put((req, res, next) => {
     }
   );
 });
-// update user template with id
+// update user transunion with id
+router.route("/update-user-transunion/:id").put((req, res, next) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $push: { transunion: [req.body.transunion] } },
+    function(err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+// update user experian with id
+router.route("/update-user-experian/:id").put((req, res, next) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $push: { experian: [req.body.experian] } },
+    function(err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+// update user equifax with id
 router.route("/update-user-equifax/:id").put((req, res, next) => {
   User.findByIdAndUpdate(
     req.params.id,

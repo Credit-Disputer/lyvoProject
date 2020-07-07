@@ -6,16 +6,16 @@ const ExperianSchema = new mongoose.Schema({
   },
   creditor_name: {
     type: String,
-    required: true,
+    required: true
   },
   generated_date: {
     type: Date,
-    default: Date.now
+    required: true
   },
   inquiries:[{
     inquiry_date: Date,
-    inquiry_company: String,
-    required: true
+    inquiry_company: String
+    // required: true
   }]
 });
 

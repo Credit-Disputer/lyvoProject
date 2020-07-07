@@ -48,11 +48,11 @@ const UserSchema = new mongoose.Schema({
   }],
   experian:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref: 'experian'
+    ref: 'Experian'
   }],
   transunion:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref: 'transunion'  }]
+    ref: 'Transunion'  }]
 });
 
 module.exports = User = mongoose.model("RegisterUser", UserSchema);
