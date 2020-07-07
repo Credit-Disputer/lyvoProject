@@ -15,15 +15,15 @@ A user
   "email": String,
   "password": String,
   "register_date": Date,
-  "Street Address": String,
-  "SSN": Int32,
-  "City": String,
-  "State": String,
-  "Zip": Int32,
-  "DOB": Date,
-  "Equifax":[{"Org ID":String}],
-  "Experian":[{"Org ID": String}],
-  "Transunion":[{"Org ID": String}]
+  "street_add": String,
+  "ssn": Int32,
+  "city": String,
+  "state": String,
+  "zip": Int32,
+  "dob": Date,
+  "equifax":[{"ID":String}],
+  "experian":[{"ID": String}],
+  "transunion":[{"ID": String}]
 }
 ```
 
@@ -33,13 +33,13 @@ A user
 
 ```json
 {
-  "Org ID": String,
-  "CR Number": String,
-  "Creditor Name": String,
-  "Generated Date": Date,
-  "Inquiries":[{
-    "Inquiry Date": Date,
-    "Inquired Company":String  
+  "_id": String,
+  "cr_number": String,
+  "creditor_name": String,
+  "generated_date": Date,
+  "inquiries":[{
+    "inquiry_date": Date,
+    "inquired_company":String  
   }]
 }
 ```
@@ -51,13 +51,13 @@ A user
 
 ```json
 {
-  "Org ID": String,
-  "CR Number": String,
-  "Creditor Name": String,
-  "Generated Date": Date,
-  "Inquiries":[{
-    "Inquiry Date": Date,
-    "Inquired Company":String  
+  "_id": String,
+  "cr_number": String,
+  "creditor_name": String,
+  "generated_date": Date,
+  "inquiries":[{
+    "inquiry_date": Date,
+    "inquired_company":String  
   }]
 }
 ```
@@ -68,13 +68,13 @@ A user
 
 ```json
 {
-  "Org ID": String,
-  "CR Number": String,
-  "Creditor Name": String,
-  "Generated Date": Date,
-  "Inquiries":[{
-    "Inquiry Date": Date,
-    "Inquired Company":String  
+  "_id": String,
+  "cr_number": String,
+  "creditor_name": String,
+  "generated_date": Date,
+  "inquiries":[{
+    "inquiry_date": Date,
+    "inquired_company":String  
   }]
 }
 ```
