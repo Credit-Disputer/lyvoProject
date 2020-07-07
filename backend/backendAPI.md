@@ -10,9 +10,17 @@ This document describes the backend API.
 
 ```json
 {
+  "id": String,
   "name": String,
   "email": String,
-  "password": String
+  "password": String,
+  "register_date": Date,
+  "street_add": String,
+  "ssn": Int32,
+  "city": String,
+  "state": String,
+  "zip": Int32,
+  "dob": Date
 }
 ```
 
@@ -79,12 +87,20 @@ This document describes the backend API.
 ```json
 [
   {
-    "_id": String,
+   "id": String,
     "name": String,
     "email": String,
-    "avatar": String,
     "password": String,
-    "register_date": Date
+    "register_date": Date,
+    "street_add": String,
+    "ssn": Int32,
+    "city": String,
+    "state": String,
+    "zip": Int32,
+    "dob": Date,
+    "equifax":[{"ID":String}],
+    "experian":[{"ID": String}],
+    "transunion":[{"ID": String}]
   }
 ]
 ```
@@ -115,13 +131,21 @@ This document describes the backend API.
 
 ```json
 {
-        "_id": String,
-        "name": String,
-        "email": String,
-        "avatar": String,
-        "password": String,
-        "register_date": Date
-    },
+  "id": String,
+  "name": String,
+  "email": String,
+  "password": String,
+  "register_date": Date,
+  "street_add": String,
+  "ssn": Int32,
+  "city": String,
+  "state": String,
+  "zip": Int32,
+  "dob": Date,
+  "equifax":[{"ID":String}],
+  "experian":[{"ID": String}],
+  "transunion":[{"ID": String}]
+},
 ```
 
 ### Error response
@@ -144,13 +168,21 @@ This document describes the backend API.
 
 ```json
 {
-        "_id": String,
-        "name": String,
-        "email": String,
-        "avatar": String,
-        "password": String,
-        "register_date": Date
-    },
+  "id": String,
+  "name": String,
+  "email": String,
+  "password": String,
+  "register_date": Date,
+  "street_add": String,
+  "ssn": Int32,
+  "city": String,
+  "state": String,
+  "zip": Int32,
+  "dob": Date,
+  "equifax":[{"ID":String}],
+  "experian":[{"ID": String}],
+  "transunion":[{"ID": String}]
+},
 ```
 
 ### Success response
@@ -162,6 +194,122 @@ This document describes the backend API.
 ```json
 {
   "id": String
+}
+```
+
+### Error response
+
+**Code** : `400`
+
+**Body** :
+
+```json
+{
+  "message": String
+}
+```
+
+## Create Template(equifax/experian/transunion)
+
+**Request** : `POST /api/template` replace _template_ with _equifax_ or _experian_ or _transunion_
+
+**Body** :
+
+```json
+{
+  "_id": String,
+  "cr_number": String,
+  "creditor_name": String,
+  "generated_date": Date,
+  "inquiries":[{
+    "inquiry_date": Date,
+    "inquired_company":String  
+  }]
+}
+```
+
+### Success response
+
+**Code** : `200`
+
+**Body** :
+
+```json
+{
+  "id": String
+}
+```
+
+### Error response
+
+**Code** : `400`
+
+**Body** :
+
+```json
+{
+  "message": String
+}
+```
+
+## Add Template ID to user
+
+**Request** : `PUT /api/user/update-user-template` replace _template_ with _equifax_ or _experian_ or _transunion_
+
+**Body** :
+
+```json
+{
+  "template": "object id"
+}
+```
+
+### Success response
+
+**Code** : `200`
+
+**Body** :
+
+```json
+{
+  "id": String
+}
+```
+
+### Error response
+
+**Code** : `400`
+
+**Body** :
+
+```json
+{
+  "message": String
+}
+```
+
+## Get template
+
+=
+**Request** : `GET /api/template/:id` replace _template_ with _equifax_ or _experian_ or _transunion_
+
+
+### Success response
+
+**Code** : `200`
+
+**Body** :
+
+```json
+{
+  "_id": String,
+  "cr_number": String,
+  "creditor_name": String,
+  "generated_date": Date,
+  "inquiries":[{
+    "inquiry_date": Date,
+    "inquired_company":String  
+  }]
 }
 ```
 
