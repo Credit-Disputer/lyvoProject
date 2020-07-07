@@ -10,7 +10,7 @@ const ExperianSchema = new mongoose.Schema({
   },
   generated_date: {
     type: Date,
-    required: true
+    default: Date.now
   },
   inquiries:[{
     inquiry_date: Date,

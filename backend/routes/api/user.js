@@ -30,11 +30,11 @@ router.post(
       "password",
       "Please enter a password with 6 or more characters"
     ).isLength({ min: 6 }),
-    check("address","Please enter stress address").isAlphanumeric(),
+    check("street_add","Please enter stress address"),
     check("city","Please enter a city").isAlpha(),
     check("state","Please enter a state").isAlpha(),
-    check("zipcode","Please enter a zipcode").isPostalCode(),
-    check("SSN","Please enter you Social Security Number").isTaxID(),
+    check("zip","Please enter a zipcode").isNumeric(),
+    check("ssn","Please enter your Social Security Number"),
  ],
   
   async (req, res) => {
@@ -43,7 +43,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, street_add, city, state, zip, ssn, dob } = req.body;
 
     try {
       // See if user exists
@@ -60,12 +60,12 @@ router.post(
         name,
         email,
         password,
-        address,
+        street_add,
+        ssn,
         city,
         state,
-        zipcode,
-        SSN
-
+        zip,
+        dob
       });
 
       // Encrypt password
@@ -131,6 +131,20 @@ router.route("/update-user/:id").put((req, res, next) => {
     }
   );
 });
+// update user template with id
+router.route("/update-user-equifax/:id").put((req, res, next) => {
+  User.findByIdAndUpdate(
+    req.params.id,
+    { $push: { equifax: [req.body.equifax] } },
+    function(err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
 
 // update active user
 router.route("/update-user").put(auth, (req, res, next) => {
@@ -149,4 +163,20 @@ router.route("/update-user").put(auth, (req, res, next) => {
   );
 });
 
+// Add Transunion id to the user
+router.route("/update-trans").put(auth, (req, res, next) => {
+  User.findByIdAndUpdate(
+    req.user.id,
+    {
+      $set: req.body
+    },
+    (error, data) => {
+      if (error) {
+        res.status(400).json("Error: " + error);
+      } else {
+        res.json(data);
+      }
+    }
+  );
+});
 module.exports = router;

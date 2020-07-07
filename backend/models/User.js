@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   ssn:{
-    type: Int32Array,
+    type: String,
     required: true
   },
   city:{
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
     required: true
   },
   zip:{
-    type:Int32Array,
+    type:String,
     required:true
   },
   dob:{

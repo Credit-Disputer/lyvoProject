@@ -29,6 +29,8 @@ connection.once("open", () => {
 // Define Routes
 app.use("/api/user", require("./routes/api/user"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/equifax", require("./routes/api/equifax"));
+
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
