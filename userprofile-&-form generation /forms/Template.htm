@@ -1,0 +1,142 @@
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<p class=Body><label id="lblName">NAME</label> </p>
+
+<p class=Body><label id="lblAddress">ADDRESS</label></p>
+
+<p class=Body><label id="lblCityStateZip"></label></p>
+
+<p class=Body>SSN: <label id="lblSSN">SSN</label></p>
+
+<p class=Body>DOB: <label id="lblDOB">DOB</label> </p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>April 10, 2019</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body><span lang=FR style='mso-ansi-language:FR'>Equifax Information Services LLC</span></p>
+
+<p class=Body>P.O. Box 740256</p>
+
+<p class=Body>Atlanta, GA 30374</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>Credit Report Number: <label id="lblCreditReport">CREDIT REPORT</label></p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>Dear <span lang=FR style='mso-ansi-language:FR'>Equifax</span>,</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>I reviewed a recent copy of my credit report and noted several
+unauthorized inquiries.</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>I have contacted the creditors noted below, and they stated that
+they have no evidence that I initiated the inquiries, either written or
+otherwise, and could not provide me with permissible purpose. As these
+inquiries are both unauthorized and unsubstantiated, I request that they be
+deleted from my credit report.</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>Per Section 604 of the Fair Credit Reporting Act (FCRA), all
+users of my credit report must have a permissible purpose. <span class=GramE>Specifically</span>
+per Section 604(a)(3)(F), a consumer reporting agency may only furnish a report
+if the recipient:</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>�otherwise has a legitimate business need for the information (<span
+class=SpellE>i</span>) in connection with a business transaction that is
+initiated by the consumer�</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>Since there is no evidence that I initiated these requests, I
+request that these inquiries be removed from my credit report as per section
+611(5)(A)(<span class=SpellE>i</span>), and that you promptly delete the
+following items from my credit report.</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>The following inquiries were not authorized:</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+<div id="Inquiries">
+</div>
+
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>As per the FCRA, you are required to notify me of the results of
+your investigation within 30 days. My contact information and social security
+number are noted at the top of this letter for your convenience, and to verify
+my identity and expedite this process.</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body>Sincerely,</p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body><o:p>&nbsp;</o:p></p>
+
+<p class=Body><label id="lblYourName">YOUR NAME</label> </p>
+
+</div>
+
+<div class="container" id="box">
+
+		<center>
+             <button class="btn btn-primary hidden-print" onclick="myFunction()"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+	    </center>
+
+</div>
+
+</body>
+
+</html>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+var formData = "";
+$(document).ready(function() {
+
+	var profileInfo = $.parseJSON(sessionStorage.qryData);
+	$('#lblName').text(profileInfo["LastName"]+ ", "+profileInfo["FirstName"].replace(/\+/g,' '));
+	$('#lblAddress').text(profileInfo["Address"].replace(/\+/g,' ') +", "+ profileInfo["Address2"].replace(/\+/g,' '));
+	//$('#lblCityStateZip').text(profileInfo["City"].replace(/\+/g,' '));
+	$('#lblSSN').text(profileInfo["SSN"].replace(/\+/g,' '));
+	$('#lblDOB').text(profileInfo["DOB"].replace(/\+/g,' '));
+	$('#lblCreditReport').text(profileInfo["CreditReport"].replace(/\+/g,' '));
+	var html="<ol>";
+	for(i=0;i<profileInfo["Company"].length;i++){
+	  html = html + "<li><p style='font-weight: 600;font-family: verdana;'>"+profileInfo["Company"][i].replace(/\+/g,' ')+"</p> <p style='font-weight: 600;font-family: verdana;'>"+profileInfo["Date"][i].replace(/\+/g,' ')+"</p></li>";
+	}
+	html=html+"</ol>";
+	$('#Inquiries').append(html)
+	$('#lblYourName').text(profileInfo["LastName"].replace(/\+/g,' ') + ", "+profileInfo["FirstName"].replace(/\+/g,' '));
+
+})
+
+function myFunction() {
+    window.print();
+}
+
+</script>

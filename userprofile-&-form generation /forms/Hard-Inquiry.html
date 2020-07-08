@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="style.css" >
+
+
+  </head>
+  <body>
+
+<div>
+  <center><h3>Sample Form</h3></center>
+  <form class="sample-form container" method="post" action="Template.htm" id="frmStudentData">
+<div class="form-group">
+      <div class="form-group">
+        <label for="inputEmail4">First Name</label>
+        <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First" />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword4">Last Name</label>
+        <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last" />
+      </div>
+    </div>
+	<div class="form-group">
+      <label for="inputAddress">DOB</label>
+      <input type="text" class="form-control" id="DOB" name="DOB" placeholder="mm/dd/yyyy"/>
+    </div>
+	<div class="form-group">
+      <label for="inputAddress">Social Security</label>
+      <input type="text" class="form-control" id="SSN"  name="SSN" placeholder="123-45-6789"/>
+    </div>
+	<div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input type="text" class="form-control" id="Address" name="Address" placeholder="1234 Main St"/>
+    </div>
+
+
+    <div class="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" class="form-control" id="Address2"  name="Address2" placeholder="Apartment, studio, or floor"/>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAddress2">Credit Report No</label>
+      <input type="text" class="form-control" id="CreditReport" name="CreditReport" placeholder="ABC123"/>
+    </div>
+
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div data-role="dynamic-fields">
+                <div class="form-inline">
+                <div class="form-group">
+                  <label for="inputAddress2">Company Name</label>
+                  <input type="text" class="form-control" id="Company" name="Company" placeholder="Company Name"/>
+                </div>
+                    <span>-</span>
+                    <div class="form-group">
+                        <label class="sr-only" for="field-value">Date Filed</label>
+                        <input type="text" class="form-control" id="Date"  name="Date" placeholder="Date Filed">
+                    </div>
+                    <button class="btn btn-danger" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+        </div>  <!-- /div.col-md-12 -->
+    </div>  <!-- /div.row -->
+</div>
+
+<!-- <a href="/Users/Fahim/Desktop/userprofile/index.html" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Submit</a> -->
+<center>
+
+<button type="button" value="Submit" onclick="saveData();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Submit</button>
+</center>
+  </form>
+
+</div>
+
+<div id=result></div>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="index.js" charset="utf-8"></script>
+<script>
+function saveData(){
+	//console.log(JSON.stringify($('form').serializeArray()));
+	//$('#result').html("SERIALIZED : "+ $('form').serialize()+"<br /><br />JSON :" + JSON.stringify($('form').serializeArray()));
+	var qsData =   queryStringToJSON($('form').serialize());
+	//console.log($('form').serialize());
+	sessionStorage.setItem('qryData',qsData);
+	//console.log(queryStringToJSON($('form').serialize()));
+	//alert(sessionStorage.formData);
+	$("#frmStudentData").submit();
+}
+function queryStringToJSON(qs) {
+    qs = qs || location.search.slice(1);
+
+    var pairs = qs.split('&');
+    var result = {};
+    pairs.forEach(function(p) {
+        var pair = p.split('=');
+        var key = pair[0];
+        var value = decodeURIComponent(pair[1] || '');
+
+        if( result[key] ) {
+            if( Object.prototype.toString.call( result[key] ) === '[object Array]' ) {
+                result[key].push( value );
+            } else {
+                result[key] = [ result[key], value ];
+            }
+        } else {
+            result[key] = value;
+        }
+    });
+
+    return JSON.stringify(result);
+};
+
+</script>
+
+</body>
+</html>
